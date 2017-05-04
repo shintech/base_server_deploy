@@ -1,0 +1,17 @@
+version: '2'
+
+services: 
+  bbps:
+    build: .
+    image: shintech/base_server:latest
+    container_name: base_server
+    env_file:
+      - ./base_server.env
+    links:
+      - db       
+    ports:
+      - 8000:8000
+    restart: always
+  db:
+    image: shintech/database:latest
+    container_name: base_server_db
